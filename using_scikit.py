@@ -14,12 +14,12 @@ def filter_islands(data):
     # pos_count = np.count_nonzero(data > 0)
 
     # if neg_count > pos_count:
-    #     # remove positive values
+        # remove positive values
     #     data = np.where(data < 0, data, np.nan)
     # else:
     #     # remove negative values
     #     data = np.where(data > 0, data, np.nan)
-    data = np.where(data > 0, data, np.nan)
+    data = np.where(data > 0, np.nan,  data )
     return data
 
 def filter_edges(data):
@@ -35,6 +35,8 @@ data_16bit = data.astype(np.int16)
 # data_16bit = np.multiply(data_16bit, -1)
 data_16bit = filter_islands(data_16bit)
 data_16bit = filter_edges(data_16bit)
+
+# %%
 blobs = feature.blob_log(data_16bit, min_sigma=0, max_sigma=15, threshold=0.01)
 print(len(blobs))
 
@@ -102,3 +104,12 @@ print("Circularities:", circularities)
 
 
 
+#alternative method
+
+blobs_filtered = blobs[blobs[:,2] < 2, :]
+fig, ax = plt.subplots(1,1)
+pcm = ax.pcolormesh(data_16bit)
+for blob in blobs_filtered:
+    y, x, r = blob
+    c = plt.Circle((x, y), r, color='red', linewidth=2, fill=False)
+    ax.add_patch(c)
