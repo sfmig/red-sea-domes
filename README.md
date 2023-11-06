@@ -19,4 +19,11 @@ apart from the header the file can be read as a matrix of digital numbers. Each 
 Data can be read into a `numpy array` by discarding the header lines.
 
 ## Method
-The 
+The method used to extract the domes is as follows:
+1. Read the data into a numpy array
+2. Apply a threshold to the data to remove all islands data
+3. Replace `NODATA_value` with `numpy.nan`
+4. Apply [Laplacian of Gaussian (LoG)](https://scikit-image.org/docs/stable/auto_examples/features_detection/plot_blob.html#laplacian-of-gaussian-log) to extract blobs (i.e. domes)
+5. Apply [find contours](https://scikit-image.org/docs/stable/auto_examples/edges/plot_contours.html) method to find the outter perimeter of each blob.
+6. Calculate the `circularity` of the first contour for each blob and store it in a list. The cirularity is calculated using the following equation `circularity = 4 * np.pi * area / (perimeter ** 2)`
+7. Classify the blobs to circular and non-circular based on the `circularity` value. All blobs with `circularity` value greater than the threshold are classified as circular and the rest are classified as non-circular.
