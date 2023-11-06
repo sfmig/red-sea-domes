@@ -27,3 +27,103 @@ The method used to extract the domes is as follows:
 5. Apply [find contours](https://scikit-image.org/docs/stable/auto_examples/edges/plot_contours.html) method to find the outter perimeter of each blob.
 6. Calculate the `circularity` of the first contour for each blob and store it in a list. The cirularity is calculated using the following equation `circularity = 4 * np.pi * area / (perimeter ** 2)`
 7. Classify the blobs to circular and non-circular based on the `circularity` value. All blobs with `circularity` value greater than the threshold are classified as circular and the rest are classified as non-circular.
+
+## Output
+Target output is location of each dome with dimentions and statistics including circularity
+
+Current output is:
+- `first_countour_list` which is a list of the first contour for each blob. Each first countor is a list of points in image coordinates. For example the first item is ```[1855.5 1332.0,
+1855.5 1331.0,
+1855.5 1330.0,
+1855.5 1329.0,
+1855.5 1328.0,
+1855.5 1327.0,
+1855.5 1326.0,
+1855.5 1325.0,
+1855.5 1324.0,
+1855.5 1323.0,
+1855.5 1322.0,
+1855.5 1321.0,
+1855.5 1320.0,
+1855.5 1319.0,
+1855.5 1318.0,
+1855.5 1317.0,
+1855.5 1316.0,
+1855.5 1315.0,
+1855.5 1314.0,
+1855.5 1313.0,
+1855.5 1312.0,
+1855.0 1311.5,
+1854.0 1311.5,
+1853.0 1311.5,
+1852.0 1311.5,
+1851.0 1311.5,
+1850.0 1311.5,
+1849.0 1311.5,
+1848.0 1311.5,
+1847.0 1311.5,
+1846.0 1311.5,
+1845.0 1311.5,
+1844.0 1311.5,
+1843.0 1311.5,
+1842.0 1311.5,
+1841.0 1311.5,
+1840.0 1311.5,
+1839.0 1311.5,
+1838.0 1311.5,
+1837.0 1311.5,
+1836.0 1311.5,
+1835.0 1311.5,
+1834.5 1312.0,
+1834.5 1313.0,
+1834.5 1314.0,
+1834.5 1315.0,
+1834.5 1316.0,
+1834.5 1317.0,
+1834.5 1318.0,
+1834.5 1319.0,
+1834.5 1320.0,
+1834.5 1321.0,
+1834.5 1322.0,
+1834.5 1323.0,
+1834.5 1324.0,
+1834.5 1325.0,
+1834.5 1326.0,
+1834.5 1327.0,
+1834.5 1328.0,
+1834.5 1329.0,
+1834.5 1330.0,
+1834.5 1331.0,
+1834.5 1332.0,
+1835.0 1332.5,
+1836.0 1332.5,
+1837.0 1332.5,
+1838.0 1332.5,
+1839.0 1332.5,
+1840.0 1332.5,
+1841.0 1332.5,
+1842.0 1332.5,
+1843.0 1332.5,
+1844.0 1332.5,
+1845.0 1332.5,
+1846.0 1332.5,
+1847.0 1332.5,
+1848.0 1332.5,
+1849.0 1332.5,
+1850.0 1332.5,
+1851.0 1332.5,
+1852.0 1332.5,
+1853.0 1332.5,
+1854.0 1332.5,
+1855.0 1332.5,
+1855.5 1332.0]```
+
+- `non_circular_blobs` and `circular_blobs` both are lists of the blobs. Each blob is presented in the form of a list of center point coordinates in image coordinates and the radius of the blob in image pixels. For example the first non circular blob is presented as `[1845., 1322.,   10.]`
+
+- plot of each blob using center point and radius 
+
+## TODO
+
+- Confirm that the methods of finding `first contour` and `circularity` are correct.
+- Convert image coordinates to world coordinates
+- Export the results in a format readable by GIS software
