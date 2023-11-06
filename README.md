@@ -130,3 +130,12 @@ Current output is:
 - Confirm that the methods of finding `first contour` and `circularity` are correct.
 - Convert image coordinates to world coordinates
 - Export the results in a format readable by GIS software
+
+## Run locally
+- install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
+- open a new terminal and clone the repo using the following command `git clone https://github.com/razekmh/red-sea-domes.git`
+- change directory to the repo `cd red-sea-domes`
+- create a new conda environment using the following command `conda env create -f environment.yml`
+- activate the new environment `conda activate red-sea-domes`
+- run the script `python main.py`
