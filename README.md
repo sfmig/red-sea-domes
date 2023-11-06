@@ -32,7 +32,9 @@ The method used to extract the domes is as follows:
 Target output is location of each dome with dimentions and statistics including circularity
 
 Current output is:
-- `first_countour_list` which is a list of the first contour for each blob. Each first countor is a list of points in image coordinates. For example the first item is ```[1855.5 1332.0,
+- `first_countour_list` which is a list of the first contour for each blob. Each first countor is a list of points in image coordinates. For example the first item is 
+```
+[1855.5 1332.0,
 1855.5 1331.0,
 1855.5 1330.0,
 1855.5 1329.0,
@@ -116,7 +118,8 @@ Current output is:
 1853.0 1332.5,
 1854.0 1332.5,
 1855.0 1332.5,
-1855.5 1332.0]```
+1855.5 1332.0]
+```
 
 - `non_circular_blobs` and `circular_blobs` both are lists of the blobs. Each blob is presented in the form of a list of center point coordinates in image coordinates and the radius of the blob in image pixels. For example the first non circular blob is presented as `[1845., 1322.,   10.]`
 
